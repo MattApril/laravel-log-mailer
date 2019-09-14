@@ -42,7 +42,7 @@ class MailableHandler extends MailHandler
     /**
      * {@inheritdoc}
      */
-    protected function send($content, array $records)
+    protected function send(string $content, array $records): void
     {
         $this->mailable->with([
             'content' => $content,
