@@ -46,7 +46,7 @@ class MailableHandler extends MailHandler
     {
         $this->mailable->with([
             'content' => $content,
-            'records' => $records,
+            //'records' => $records, -- this was breaking queued mail jobs..
         ]);
 
         $this->setSubject($records);
