@@ -28,6 +28,15 @@ class MailableHandler extends MailHandler
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function isHandling(array $record): bool
+    {
+        # tweak by matt: don't email errors about failed emails.. attempt to avoid nasty loops
+        return parent::isHandling($record) && !($record['context']['exception'] instanceof \Swift_TransportException);
+    }
+
+    /**
      * Set the subject.
      *
      * @param array $records
